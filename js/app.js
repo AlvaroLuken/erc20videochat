@@ -1,7 +1,7 @@
 // replace these values with those generated in your TokBox Account
 var apiKey = "46995354";
-var sessionId = "2_MX40Njk5NTM1NH5-MTYwNTgxMzYzMjU5NH4wZ0xkSDE5anBXQjBLbnVkMnNYV0NFZzF-fg";
-var token = "T1==cGFydG5lcl9pZD00Njk5NTM1NCZzaWc9MWVhZTJmNWMyMGQyZjVlMDlhN2M4Mzc5OWFmNDM5MGU1Y2JiMzNiZTpzZXNzaW9uX2lkPTJfTVg0ME5qazVOVE0xTkg1LU1UWXdOVGd4TXpZek1qVTVOSDR3WjB4a1NERTVhbkJYUWpCTGJuVmtNbk5ZVjBORlp6Ri1mZyZjcmVhdGVfdGltZT0xNjA1ODEzNjc4Jm5vbmNlPTAuODI0NDE5NDAyNTk0MzQ0NSZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNjA4NDA1Njc3JmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9";
+var sessionId = "2_MX40Njk5NTM1NH5-MTYwNTgyOTY1NjEwNH5Zb3JBcG1NY3A5NUl4ZGdwYXMwRG1WSFJ-fg";
+var token = "T1==cGFydG5lcl9pZD00Njk5NTM1NCZzaWc9MTdjNDA0MmU0MzRmODcyOGI3YTc3NjVjOTJlNDVmMzFlZDJhZjRiMzpzZXNzaW9uX2lkPTJfTVg0ME5qazVOVE0xTkg1LU1UWXdOVGd5T1RZMU5qRXdOSDVaYjNKQmNHMU5ZM0E1TlVsNFpHZHdZWE13UkcxV1NGSi1mZyZjcmVhdGVfdGltZT0xNjA1ODI5NjY2Jm5vbmNlPTAuNTAyMzk0NTQxMjg1Nzg2NiZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNjA1ODMzMjY1JmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9";
 
 
 
@@ -12,7 +12,7 @@ function handleError(error) {
   }
 }
 
-var SERVER_BASE_URL = 'https://shrouded-anchorage-86325.herokuapp.com/';
+var SERVER_BASE_URL = 'https://second-try-remote.herokuapp.com';
     fetch(SERVER_BASE_URL + '/session').then(function(res) {
       return res.json()
     }).then(function(res) {
