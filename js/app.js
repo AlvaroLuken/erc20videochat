@@ -7,13 +7,20 @@ const Web3 = require("web3");
 const ethers = require('ethers');
 var web3 = new Web3(Web3.givenProvider || 'http://localhost:3000');
 
-
+console.log("1");
 
 if(ethereum.isConnected()) {
+	console.log("HEY");
 	alert('heyyy');
 }
 
-
+console.log("3");
+// Handling all of our errors here by alerting them
+function handleError(error) {
+  if (error) {
+    alert(error.message);
+  }
+}
 
 var SERVER_BASE_URL = 'https://second-try-remote.herokuapp.com';
     fetch(SERVER_BASE_URL + '/session').then(function(res) {
@@ -37,13 +44,6 @@ function initializeSession() {
 	    height: '100%'
 	  }, handleError);
   });
-
-  // Handling all of our errors here by alerting them
-function handleError(error) {
-  if (error) {
-    alert(error.message);
-  }
-}
 
   // Create a publisher
   var publisher = OT.initPublisher('publisher', {
