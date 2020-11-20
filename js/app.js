@@ -11,10 +11,6 @@ var token = "T1==cGFydG5lcl9pZD00Njk5NTM1NCZzaWc9MTdjNDA0MmU0MzRmODcyOGI3YTc3NjV
 
 console.log("1");
 
-if(ethereum.isConnected()) {
-	console.log("HEY");
-	alert('heyyy');
-}
 
 console.log("3");
 // Handling all of our errors here by alerting them
@@ -31,7 +27,12 @@ var SERVER_BASE_URL = 'https://second-try-remote.herokuapp.com';
       apiKey = res.apiKey;
       sessionId = res.sessionId;
       token = res.token;
-      initializeSession();
+      if(ethereum.isConnected()) {
+      	initializeSession();
+      } else {
+      	alert('connect metamask!');
+      }
+      
     }).catch(handleError);
 
 function initializeSession() {
