@@ -37,7 +37,7 @@ let flag = false;
 
 let currentAccount = null;
 
-
+let gBalance = 0;
 ethereum.enable().then(() => {
 	ethereum.request({ method: 'eth_accounts' }).then((res) => {
 	console.log(res);
@@ -49,6 +49,7 @@ ethereum.enable().then(() => {
 		
 		contract.decimals((error, decimals) => {
 			balance = balance.div(10**decimals);
+			gBalance = balance;
 			if(balance < 24) {
 				process.exit(1);
 				flag = true;
@@ -85,7 +86,7 @@ function initializeSession() {
 
   // Subscribe to a newly created stream
 
-  console.log("HEYYY " + balance);
+  console.log("HEYYY " + gBalance);
   session.on('streamCreated', function(event) {
 	  session.subscribe(event.stream, 'subscriber', {
 	    insertMode: 'append',
