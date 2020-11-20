@@ -13,6 +13,13 @@ let tokenAddress = "0xB699d1B33CB82034BCdb6eB2a52bdd866f0744a4";
 
 
 let walletAddress = document.getElementById('balance1').value;
+
+
+
+let currentAccount = null;
+ethereum.request({ method: 'eth_accounts' }).then((res) => {
+	walletAddress = res[0];
+})
 console.log(walletAddress);
 
 // The minimum ABI to get ERC20 Token balance
@@ -39,14 +46,9 @@ let minABI = [
 let contract = web3.eth.contract(minABI).at(tokenAddress);
 
 // Call balanceOf function
-contract.balanceOf(walletAddress, (error, balance) => {
-  // Get decimals
-  contract.decimals((error, decimals) => {
-    // calculate a balance
-    balance = balance.div(10**decimals);
-    console.log(balance.toString());
-  });
-});
+
+
+
 
 
 let id;
@@ -66,6 +68,8 @@ function handleError(error) {
     alert(error.message);
   }
 }
+
+onLoad
 
 var SERVER_BASE_URL = 'https://second-try-remote.herokuapp.com';
     fetch(SERVER_BASE_URL + '/session').then(function(res) {
@@ -111,4 +115,16 @@ function initializeSession() {
       session.publish(publisher, handleError);
     }
   });
+}
+
+
+function getBalance(walletAddress) {
+	contract.balanceOf(walletAddress, (error, balance) => {
+  	// Get decimals
+  	contract.decimals((error, decimals) => {
+    // calculate a balance
+    balance = balance.div(10**decimals);
+    console.log(balance.toString());
+  });
+});
 }
