@@ -42,10 +42,15 @@ ethereum.request({ method: 'eth_accounts' }).then((res) => {
 	console.log(getBalance(res[0]));
 	walletAddress = res[0];
 	contract.balanceOf(walletAddress, (error, balance) => {
-		//balance = balance.div(10**decimals);
-		console.log("BALANCE" + balance);
+		//
+		
+		contract.decimals((error, decimals) => {
+			balance = balance.div(10**decimals);
+			console.log("BALANCE" + balance);
+		});
 
 	});
+
   	// Get decimals
  // 	contract.decimals((error, decimals) => {
     // calculate a balance
