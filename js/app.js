@@ -12,7 +12,7 @@ let id;
 
 ethereum.enable().then(() => {
   id = ethereum.selectedAddress
-}
+});
 console.log("1");
 
 console.log("Id is: " + id);
