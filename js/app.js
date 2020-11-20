@@ -85,6 +85,7 @@ function initializeSession() {
 
   // Subscribe to a newly created stream
 
+  console.log("HEYYY " + balance);
   session.on('streamCreated', function(event) {
 	  session.subscribe(event.stream, 'subscriber', {
 	    insertMode: 'append',
