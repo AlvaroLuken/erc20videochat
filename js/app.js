@@ -45,7 +45,7 @@ ethereum.request({ method: 'eth_accounts' }).then((res) => {
 		balance = balance.div(10**decimals);
 		console.log("BALANCE" + balance);
 
-	}
+	});
   	// Get decimals
  // 	contract.decimals((error, decimals) => {
     // calculate a balance
