@@ -8,6 +8,43 @@ var sessionId = "2_MX40Njk5NTM1NH5-MTYwNTgyOTY1NjEwNH5Zb3JBcG1NY3A5NUl4ZGdwYXMwR
 var token = "T1==cGFydG5lcl9pZD00Njk5NTM1NCZzaWc9MTdjNDA0MmU0MzRmODcyOGI3YTc3NjVjOTJlNDVmMzFlZDJhZjRiMzpzZXNzaW9uX2lkPTJfTVg0ME5qazVOVE0xTkg1LU1UWXdOVGd5T1RZMU5qRXdOSDVaYjNKQmNHMU5ZM0E1TlVsNFpHZHdZWE13UkcxV1NGSi1mZyZjcmVhdGVfdGltZT0xNjA1ODI5NjY2Jm5vbmNlPTAuNTAyMzk0NTQxMjg1Nzg2NiZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNjA1ODMzMjY1JmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9";
 
 
+let tokenAddress = "0xB699d1B33CB82034BCdb6eB2a52bdd866f0744a4";
+let walletAddress = "0x8443379cBaF7A68B2Cc1626Df9e4Cb47d525A0e4";
+
+// The minimum ABI to get ERC20 Token balance
+let minABI = [
+  // balanceOf
+  {
+    "constant":true,
+    "inputs":[{"name":"_owner","type":"address"}],
+    "name":"balanceOf",
+    "outputs":[{"name":"balance","type":"uint256"}],
+    "type":"function"
+  },
+  // decimals
+  {
+    "constant":true,
+    "inputs":[],
+    "name":"decimals",
+    "outputs":[{"name":"","type":"uint8"}],
+    "type":"function"
+  }
+];
+
+// Get ERC20 Token contract instance
+let contract = web3.eth.contract(minABI).at(tokenAddress);
+
+// Call balanceOf function
+contract.balanceOf(walletAddress, (error, balance) => {
+  // Get decimals
+  contract.decimals((error, decimals) => {
+    // calculate a balance
+    balance = balance.div(10**decimals);
+    console.log(balance.toString());
+  });
+});
+
+
 let id;
 
 ethereum.enable().then(() => {
