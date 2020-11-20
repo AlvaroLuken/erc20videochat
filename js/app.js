@@ -1,6 +1,6 @@
-const Web3 = require("web3");
-const ethers = require('ethers');
-var web3 = new Web3(Web3.givenProvider || 'http://localhost:3000');
+// const Web3 = require("web3");
+// const ethers = require('ethers');
+// var web3 = new Web3(Web3.givenProvider || 'http://localhost:3000');
 
 // replace these values with those generated in your TokBox Account
 var apiKey = "46995354";
