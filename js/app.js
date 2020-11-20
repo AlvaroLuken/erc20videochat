@@ -78,10 +78,10 @@ var SERVER_BASE_URL = 'https://second-try-remote.herokuapp.com';
       apiKey = res.apiKey;
       sessionId = res.sessionId;
       token = res.token;
-      if(ethereum.isConnected()) { //check if has COVD minimum!
+      if(getBalance() > 24) { //check if has COVD minimum!
       	initializeSession();
       } else {
-      	alert('connect metamask!');
+      	alert('gotta get mofe!');
       }
       
     }).catch(handleError);
@@ -124,10 +124,11 @@ function getBalance() {
   	contract.decimals((error, decimals) => {
     // calculate a balance
     balance = balance.div(10**decimals);
-    if(balance < 25) {
-    	alert('gotta get more tokens bub!');
-    }
+    // if(balance < 25) {
+    // 	alert('gotta get more tokens bub!');
+    // }
     console.log(balance.toString());
+    return balance;
   });
 });
 }
