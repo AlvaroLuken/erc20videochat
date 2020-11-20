@@ -51,9 +51,9 @@ ethereum.enable().then(() => {
 			balance = balance.div(10**decimals);
 			gBalance = balance;
 			if(balance < 24) {
-				process.exit();
+				
 				flag = true;
-			//	throw new Error("get more tokens hunny");
+				throw new Error("get more tokens hunny");
 
 			}
 			console.log("BALANCE" + balance);
