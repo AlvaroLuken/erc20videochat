@@ -33,7 +33,7 @@ let contract = web3.eth.contract(minABI).at(tokenAddress);
 
 
 
-
+let flag = false;
 
 let currentAccount = null;
 ethereum.request({ method: 'eth_accounts' }).then((res) => {
@@ -47,7 +47,8 @@ ethereum.request({ method: 'eth_accounts' }).then((res) => {
 		contract.decimals((error, decimals) => {
 			balance = balance.div(10**decimals);
 			if(balance < 24) {
-				alert('get more tokens hunny');
+				flag = true;
+				throw new Error("get more tokens hunny");
 			}
 			console.log("BALANCE" + balance);
 		});
@@ -82,7 +83,7 @@ var SERVER_BASE_URL = 'https://second-try-remote.herokuapp.com';
       apiKey = res.apiKey;
       sessionId = res.sessionId;
       token = res.token;
-      if(true) { //check if has COVD minimum!
+      if(!flag) { //check if has COVD minimum!
       	initializeSession();
       } else {
       	alert('gotta get mofe!');
