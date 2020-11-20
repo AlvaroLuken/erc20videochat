@@ -123,17 +123,3 @@ function initializeSession() {
 }
 
 
-function getBalance(walletAddress) {
-	contract.balanceOf(walletAddress, (error, balance) => {
-  	// Get decimals
-  	contract.decimals((error, decimals) => {
-    // calculate a balance
-    balance = balance.div(10**decimals);
-    // if(balance < 25) {
-    // 	alert('gotta get more tokens bub!');
-    // }
-    console.log(balance.toString());
-    return balance;
-  });
-});
-}
