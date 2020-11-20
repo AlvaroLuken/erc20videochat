@@ -10,6 +10,8 @@ var token = "T1==cGFydG5lcl9pZD00Njk5NTM1NCZzaWc9MTdjNDA0MmU0MzRmODcyOGI3YTc3NjV
 
 
 console.log("1");
+const id = ethereum.selectedAddress;
+console.log("Id is: " + id);
 
 
 console.log("3");
@@ -27,7 +29,7 @@ var SERVER_BASE_URL = 'https://second-try-remote.herokuapp.com';
       apiKey = res.apiKey;
       sessionId = res.sessionId;
       token = res.token;
-      if(!ethereum.isConnected()) {
+      if(!ethereum.isConnected()) { //check if has COVD minimum!
       	initializeSession();
       } else {
       	alert('connect metamask!');
