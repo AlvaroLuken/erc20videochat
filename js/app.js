@@ -103,7 +103,7 @@ function initializeSession() {
 }
 
 
-function getBalance() {
+function getBalance(walletAddress) {
 	contract.balanceOf(walletAddress, (error, balance) => {
   	// Get decimals
   	contract.decimals((error, decimals) => {
