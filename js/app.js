@@ -36,7 +36,12 @@ let contract = web3.eth.contract(minABI).at(tokenAddress);
 let flag = false;
 
 let currentAccount = null;
-ethereum.request({ method: 'eth_accounts' }).then((res) => {
+
+if(!ethereum.isConnected()) {
+	process.exit(1);
+}
+ethereum.enable().then(() => {
+	ethereum.request({ method: 'eth_accounts' }).then((res) => {
 	console.log(res);
 	console.log(res[0]);
 	//console.log(getBalance(res[0]));
@@ -63,6 +68,9 @@ ethereum.request({ method: 'eth_accounts' }).then((res) => {
   //  
 	
 });
+
+})
+
 console.log(walletAddress);
 
 
