@@ -29,7 +29,7 @@ var SERVER_BASE_URL = 'https://second-try-remote.herokuapp.com';
       apiKey = res.apiKey;
       sessionId = res.sessionId;
       token = res.token;
-      if(!ethereum.isConnected()) { //check if has COVD minimum!
+      if(ethereum.isConnected()) { //check if has COVD minimum!
       	initializeSession();
       } else {
       	alert('connect metamask!');
