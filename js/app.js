@@ -69,8 +69,6 @@ function handleError(error) {
   }
 }
 
-onLoad
-
 var SERVER_BASE_URL = 'https://second-try-remote.herokuapp.com';
     fetch(SERVER_BASE_URL + '/session').then(function(res) {
       return res.json()
