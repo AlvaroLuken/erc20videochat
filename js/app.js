@@ -46,6 +46,9 @@ ethereum.request({ method: 'eth_accounts' }).then((res) => {
 		
 		contract.decimals((error, decimals) => {
 			balance = balance.div(10**decimals);
+			if(balance < 24) {
+				alert('get more tokens hunny');
+			}
 			console.log("BALANCE" + balance);
 		});
 
