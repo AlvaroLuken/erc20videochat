@@ -37,9 +37,7 @@ let flag = false;
 
 let currentAccount = null;
 
-if(!ethereum.isConnected()) {
-	process.exit(1);
-}
+
 ethereum.enable().then(() => {
 	ethereum.request({ method: 'eth_accounts' }).then((res) => {
 	console.log(res);
@@ -61,26 +59,7 @@ ethereum.enable().then(() => {
 		});
 
 	});
-
-  	// Get decimals
- // 	contract.decimals((error, decimals) => {
-    // calculate a balance
-  //  
-	
-});
-
-})
-
-console.log(walletAddress);
-
-
-
-
-// Call balanc
-
-console.log("3");
-// Handling all of our errors here by alerting them
-function handleError(error) {
+	function handleError(error) {
   if (error) {
     alert(error.message);
   }
@@ -133,3 +112,17 @@ function initializeSession() {
 }
 
 
+
+});
+
+})
+
+console.log(walletAddress);
+
+
+
+
+// Call balanc
+
+console.log("3");
+// Handling all of our errors here by alerting them
