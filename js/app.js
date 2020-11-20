@@ -46,22 +46,6 @@ let minABI = [
 // Get ERC20 Token contract instance
 let contract = web3.eth.contract(minABI).at(tokenAddress);
 
-// Call balanceOf function
-
-
-
-
-
-let id;
-
-ethereum.enable().then(() => {
-  id = ethereum.selectedAddress
-});
-console.log("1");
-
-console.log("Id is: " + id);
-
-
 console.log("3");
 // Handling all of our errors here by alerting them
 function handleError(error) {
