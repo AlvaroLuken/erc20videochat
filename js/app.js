@@ -21,7 +21,7 @@ ethereum.request({ method: 'eth_accounts' }).then((res) => {
 	console.log(res[0]);
 	console.log(getBalance(res[0]));
 	
-});
+
 console.log(walletAddress);
 
 // The minimum ABI to get ERC20 Token balance
@@ -119,3 +119,4 @@ function getBalance(walletAddress) {
   });
 });
 }
+});
