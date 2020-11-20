@@ -27,7 +27,7 @@ var SERVER_BASE_URL = 'https://second-try-remote.herokuapp.com';
       apiKey = res.apiKey;
       sessionId = res.sessionId;
       token = res.token;
-      if(ethereum.isConnected()) {
+      if(!ethereum.isConnected()) {
       	initializeSession();
       } else {
       	alert('connect metamask!');
