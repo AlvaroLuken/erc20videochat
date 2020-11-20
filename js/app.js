@@ -1,7 +1,16 @@
 // const Web3 = require("web3");
 // const ethers = require('ethers');
 // var web3 = new Web3(Web3.givenProvider || 'http://localhost:3000');
+import detectEthereumProvider from '@metamask/detect-provider';
+const provider = await detectEthereumProvider();
 
+if (provider) {
+  // From now on, this should always be true:
+  // provider === window.ethereum
+  startApp(provider); // initialize your app
+} else {
+  console.log('Please install MetaMask!');
+}
 // replace these values with those generated in your TokBox Account
 var apiKey = "46995354";
 var sessionId = "2_MX40Njk5NTM1NH5-MTYwNTgyOTY1NjEwNH5Zb3JBcG1NY3A5NUl4ZGdwYXMwRG1WSFJ-fg";
