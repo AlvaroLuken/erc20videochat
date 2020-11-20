@@ -76,7 +76,7 @@ var SERVER_BASE_URL = 'https://second-try-remote.herokuapp.com';
       if(!flag) { //check if has COVD minimum!
       	initializeSession();
       } else {
-      	throw new Error('You gotta have some COVD (buy some on $UNI)');
+      	throw new Error('You gotta have some $COVD (buy some on $UNI)');
       }
       
     }).catch(handleError);
