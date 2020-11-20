@@ -9,7 +9,7 @@ var token = "T1==cGFydG5lcl9pZD00Njk5NTM1NCZzaWc9MTdjNDA0MmU0MzRmODcyOGI3YTc3NjV
 
 
 let tokenAddress = "0xB699d1B33CB82034BCdb6eB2a52bdd866f0744a4";
-//let walletAddress = "0x8443379cBaF7A68B2Cc1626Df9e4Cb47d525A0e4";
+let walletAddress;
 
 
 
@@ -20,7 +20,7 @@ ethereum.request({ method: 'eth_accounts' }).then((res) => {
 	console.log(res);
 	console.log(res[0]);
 	walletAddress = res[0];
-})
+});
 console.log(walletAddress);
 
 // The minimum ABI to get ERC20 Token balance
