@@ -53,7 +53,7 @@ ethereum.enable().then(() => {
 			if(balance < 24) {
 				
 				flag = true;
-				throw new Error("get more tokens hunny");
+				throw new Error("You gotta get COVID to hang with us hunny");
 
 			}
 			console.log("BALANCE" + balance);
