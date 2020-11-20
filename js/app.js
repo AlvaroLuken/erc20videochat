@@ -49,6 +49,7 @@ ethereum.request({ method: 'eth_accounts' }).then((res) => {
 			if(balance < 24) {
 				flag = true;
 				throw new Error("get more tokens hunny");
+				process.exit(1);
 			}
 			console.log("BALANCE" + balance);
 		});
