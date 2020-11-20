@@ -19,9 +19,10 @@ let currentAccount = null;
 ethereum.request({ method: 'eth_accounts' }).then((res) => {
 	console.log(res);
 	console.log(res[0]);
-	console.log(getBalance(res[0]));
 	walletAddress = res[0];
-
+	console.log(getBalance(walletAddress));
+	
+});
 console.log(walletAddress);
 
 // The minimum ABI to get ERC20 Token balance
@@ -46,6 +47,8 @@ let minABI = [
 
 // Get ERC20 Token contract instance
 let contract = web3.eth.contract(minABI).at(tokenAddress);
+
+// Call balanc
 
 console.log("3");
 // Handling all of our errors here by alerting them
