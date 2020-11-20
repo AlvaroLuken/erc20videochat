@@ -18,6 +18,7 @@ let walletAddress = document.getElementById('balance1').value;
 
 let currentAccount = null;
 ethereum.request({ method: 'eth_accounts' }).then((res) => {
+	console.log(res);
 	walletAddress = res[0];
 })
 console.log(walletAddress);
