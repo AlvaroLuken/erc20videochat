@@ -34,9 +34,9 @@ h1 {
     line-height: 1 !important; 
     text-align: center !important; 
 }
-h5 {
+h5, h6 {
     text-align: center !important; 
-    
+
 }
 #block_container { 
     color: #111 !important; 
