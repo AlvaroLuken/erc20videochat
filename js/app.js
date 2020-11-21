@@ -68,16 +68,21 @@ ethereum.enable().then(() => {
 
 var SERVER_BASE_URL = 'https://second-try-remote.herokuapp.com';
     fetch(SERVER_BASE_URL + '/session').then(function(res) {
-      return res.json()
+      if(!flag) {
+      	return res.json()
+      } else {
+      	throw new Error('NO');
+      }
+      
     }).then(function(res) {
       apiKey = res.apiKey;
       sessionId = res.sessionId;
       token = res.token;
-      if(!flag) { //check if has COVD minimum!
-      	initializeSession();
-      } else {
-      	throw new Error('You gotta have some $COVD (buy some on $UNI)');
-      }
+      // if(!flag) { //check if has COVD minimum!
+      // 	initializeSession();
+      // } else {
+      // 	throw new Error('You gotta have some $COVD (buy some on $UNI)');
+      // }
       
     }).catch(handleError);
 
