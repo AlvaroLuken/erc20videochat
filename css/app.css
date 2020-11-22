@@ -12,7 +12,7 @@
     width: 50%;
     height: 50%;
     object-fit: cover;
-    border: solid;
+    border: dashed;
     display: inline-block !important;
     padding: 1px;
 }
