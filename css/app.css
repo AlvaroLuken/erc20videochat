@@ -8,7 +8,7 @@
 }
 
 
-video.ot_video-element {
+.OT_video-element {
     width: 50%;
     height: 50%;
     object-fit: cover;
