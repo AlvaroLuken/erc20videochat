@@ -82,8 +82,8 @@ ethereum.enable().then(() => {
 }
 
 var SERVER_BASE_URL = 'https://second-try-remote.herokuapp.com';
-    fetch(SERVER_BASE_URL + '/session').then(function(res) {
-      return res.json()
+    fetch(SERVER_BASE_URL + '/session', {
+      mode: 'no-cors'
     }).then(function(res) {
       apiKey = res.apiKey;
       sessionId = res.sessionId;
