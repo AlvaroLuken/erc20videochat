@@ -31,6 +31,7 @@ let walletAddress;
 // Get ERC20 Token contract instance
 let contract = web3.eth.contract(minABI).at(tokenAddress);
 
+console.log("CHANGES COMING THRUY!");
 
 
 let flag = false;
