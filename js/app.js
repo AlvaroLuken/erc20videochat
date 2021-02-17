@@ -26,7 +26,7 @@ let minABI = [
   }
 ];
 
-let tokenAddress = "0xB699d1B33CB82034BCdb6eB2a52bdd866f0744a4";
+let tokenAddress = "0x81e94064742e1BE132E7b4E1F12F947441d0FCAa";
 let walletAddress;
 // Get ERC20 Token contract instance
 let contract = web3.eth.contract(minABI).at(tokenAddress);
@@ -38,6 +38,18 @@ let flag = false;
 let currentAccount = null;
 
 let gBalance = 0;
+console.log("HEY!");
+
+filter = {
+    address: tokenAddress,
+    topics: [
+        // the name of the event, parnetheses containing the data type of each event, no spaces
+        utils.id("TransactionStateUpdate(uint,Transaction)")
+    ]
+}
+provider.on(filter, () => {
+    console.log("HEEEEE");
+})
 ethereum.enable().then(() => {
 	ethereum.request({ method: 'eth_accounts' }).then((res) => {
 	console.log(res);
@@ -50,6 +62,9 @@ ethereum.enable().then(() => {
 		contract.decimals((error, decimals) => {
 			balance = balance.div(10**decimals);
 			gBalance = balance;
+
+      console.log("HERE???");
+      
 			if(balance < 24) {
 				
 				flag = true;
