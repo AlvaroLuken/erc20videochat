@@ -1,11 +1,12 @@
 
 import { ethers } from "ethers";
 import { cors } from "../config/security.js";
-require("regenerator-runtime/runtime");
+import { Web3 } from "web3";
+//require("regenerator-runtime/runtime");
 // const Web3 = require("web3");
 // const ethers = require('ethers');
 // var web3 = new Web3(Web3.givenProvider || 'http://localhost:3000');
-var Web3 = require('web3');
+//var Web3 = require('web3');
 
 
 
