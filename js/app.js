@@ -1,13 +1,18 @@
 
 import { ethers } from "ethers";
-import { Web3 } from "web3";
-//require("regenerator-runtime/runtime");
+import { cors } from "../config/security.js";
+require("regenerator-runtime/runtime");
 // const Web3 = require("web3");
+// const ethers = require('ethers');
+// var web3 = new Web3(Web3.givenProvider || 'http://localhost:3000');
+var Web3 = require('web3');
+
+
 
 // replace these values with those generated in your TokBox Account
 //let apiKey = "46995354";
 
-const SERVER_BASE_URL = 'https://most-updated-video-chat.herokuapp.com/';
+const SERVER_BASE_URL = 'https://most-updated-video-chat.herokuapp.com';
 
 // The minimum ABI to get ERC20 Token balance
 const mainNetworkUrl = "https://mainnet.infura.io/v3/29588a3dfcd742b48547f72ba8ff245b";
