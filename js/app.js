@@ -1,6 +1,4 @@
 
-//import { ethers } from "ethers";
-require("regenerator-runtime/runtime");
 // const Web3 = require("web3");
 const ethers = require('ethers');
 // var web3 = new Web3(Web3.givenProvider || 'http://localhost:3000');
