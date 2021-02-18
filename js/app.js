@@ -1,10 +1,11 @@
+
+import { ethers } from "ethers";
+require("regenerator-runtime/runtime");
 // const Web3 = require("web3");
 // const ethers = require('ethers');
 // var web3 = new Web3(Web3.givenProvider || 'http://localhost:3000');
 var Web3 = require('web3');
 
-const { ethers } = require("ethers");
-const BigNumber = require('bignumber.js');
 
 
 // replace these values with those generated in your TokBox Account
@@ -104,6 +105,7 @@ function startVideoChat() {
   fetch(SERVER_BASE_URL + '/session', {
   mode: 'no-cors'
 }).then(function(res) {
+  console.log(res);
   apiKey = res.apiKey;
   sessionId = res.sessionId;
   token = res.token;
