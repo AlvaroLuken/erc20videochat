@@ -1,10 +1,11 @@
-
-import { ethers } from "ethers";
-import { cors } from "../config/security.js";
-import { Web3 } from "web3";
+import detectEthereumProvider from '@metamask/detect-provider';
+// import { ethers } from "ethers";
+// import { cors } from "../config/security.js";
+// import { Web3 } from "web3";
 //require("regenerator-runtime/runtime");
-// const Web3 = require("web3");
-// const ethers = require('ethers');
+const Web3 = require("web3");
+const ethers = require('ethers');
+const axios = require('axios');
 // var web3 = new Web3(Web3.givenProvider || 'http://localhost:3000');
 //var Web3 = require('web3');
 
@@ -39,85 +40,182 @@ let minABI = [
 
 let tokenAddress = "0xb699d1b33cb82034bcdb6eb2a52bdd866f0744a4";
 let walletAddress;
+
+
+
+
+async function getProvider() {
+
+const provider = await detectEthereumProvider();
+
+return provider;
+
+}
+
+const provider = getProvider();
+
+if (provider) {
+  // From now on, this should always be true:
+  // provider === window.ethereum
+  console.log("all good!"); // initialize your app
+} else {
+  console.log('Please install MetaMask!');
+}
+
+
+
+
+ // fetch(SERVER_BASE_URL + '/session', {
+//   mode: 'no-cors'
+// }).then(function(res) {
+//   console.log(res);
+//   apiKey = res.apiKey;
+//   sessionId = res.sessionId;
+//   token = res.token;
+
+
+
+//https://api.tokenbalance.com/token/
+
+
 // Get ERC20 Token contract instance
 
-const provider = new ethers.providers.JsonRpcProvider(ropstenURL);
+//const provider = new ethers.providers.JsonRpcProvider(ropstenURL);
 // const signer = provider.getSigner(0);/
 //console.log(signer.getAddress());
-const contractToQuery = new ethers.Contract(
-  tokenAddress,
-  minABI,
-  provider
-);
+// const contractToQuery = new ethers.Contract(
+//   tokenAddress,
+//   minABI,
+//   provider
+// );
 
 let hasEnough = true;
 
-ethereum
-  .request({
-    method: 'eth_accounts',
-  })
-  .then((result) => {
-    walletAddress = result[0];
-    console.log("wa" + walletAddress);
-    contractToQuery.balanceOf(walletAddress).then((res) => {
-      let bal = parseInt(res._hex, 16);
+async function asyncFunc(addr) {
+  // fetch data from a url endpoint
+  let path = "https://test.tokenbalance.com/balance/" + tokenAddress + '/' + addr;
+  console.log(path);
+  const res = await axios.get(path);
+  console.log(res.data);
 
-      // if(bal == 0) {
-      //   console.log("DONE!!!!!");
-      // }
-      // //let a = BigNumber.from(24);
-      // console.log(bal)
-      // //let bals = bal.toString().substring(0, 16);
-      // let clean = ethers.utils.parseUnits(bal.toString(), 'gwei')
-      // let check = ethers.utils.parseUnits("24", 'gwei');
-
-      // //let wei = utils.bigNumberify(bal);
-
-
-      // //let tr1 = ethers.utils.formatEther(wei);
-      // console.log(clean);
-      // console.log(check);
-
-      // const etherValue = Web3.utils.fromWei(bal.toString());
-
-
-      // let threshold = "240000000000000000000";
-      //let hexString = threshold.toString(16);
-      //console.log("ETH" + etherValue);
-      //let t = parseInt(hexString, 16);
-
-      if(bal <= 0) {
-
-        hasEnough = false;
-        alert("You need at least 1 $COVD to video chat!")
-      } else {
-        console.log("Welcome to the citadel!");
-        startVideoChat();
-      }
-    }).catch((error) => {
-      console.log(error);
-    });
-  })
-  .catch((error) => {
+  if(res.data >= 24) {
+    startVideoChat(res.data);
+  } else {
     alert("You need at least 1 $COVD to video chat!");
+  }
+  
+
+
+}
+//asyncFunc();
+
+
+
+
+
+
+
+let currentAccount = null;
+ethereum
+  .request({ method: 'eth_accounts' })
+  .then(handleAccountsChanged)
+  .catch((err) => {
+    // Some unexpected error.
+    // For backwards compatibility reasons, if no accounts are available,
+    // eth_accounts will return an empty array.
+    console.error(err);
   });
 
+// Note that this event is emitted on page load.
+// If the array of accounts is non-empty, you're already
+// connected.
+ethereum.on('accountsChanged', handleAccountsChanged);
 
-function startVideoChat() {
-  fetch(SERVER_BASE_URL + '/session', {
-  mode: 'no-cors'
-}).then(function(res) {
-  console.log(res);
-  apiKey = res.apiKey;
-  sessionId = res.sessionId;
-  token = res.token;
+// For now, 'eth_accounts' will continue to always return an array
+function handleAccountsChanged(accounts) {
+  if (accounts.length === 0) {
+    // MetaMask is locked or the user has not connected any accounts
+    console.log('Please connect to MetaMask.');
+  } else if (accounts[0] !== currentAccount) {
+    currentAccount = accounts[0];
+    console.log(currentAccount);
+    asyncFunc(currentAccount);
+    // Do any other work!
+  }
+}
+
+
+
+
+
+// async function asyncFunc() {
+//   // fetch data from a url endpoint
+//   console.log("hi");
+//   let x = await fetch("https://test.tokenbalance.com/balance/" + tokenAddress + '/' + walletAddress + '/', {
+
+//     }).then((res) => {
+//       console.log(res);
+//       if(5 <= 0) {
+
+//         hasEnough = false;
+//         alert("You need at least 1 $COVD to video chat!")
+//       } else {
+//         console.log("Welcome to the citadel!");
+//         startVideoChat();
+//       }
+
+//   });
+//   return x;
+//   //let path = "https://test.tokenbalance.com/balance/" + tokenAddress + '/' + walletAddress + '/';
+// }
+// console.log(asyncFunc());
+
+// ethereum
+//   .request({
+//     method: 'eth_accounts',
+//   })
+//   .then((result) => {
+//     walletAddress = result[0];
+//     console.log("HERE");
+    
+//     console.log(path);
+//     fetch("https://test.tokenbalance.com/balance" + tokenAddress + '/' + walletAddress, {
+
+//     }).then((res) => {
+//       console.log(res);
+//       if(5 <= 0) {
+
+//         hasEnough = false;
+//         alert("You need at least 1 $COVD to video chat!")
+//       } else {
+//         console.log("Welcome to the citadel!");
+//         startVideoChat();
+//       }
+
+//     });
+//     console.log("wa" + walletAddress);
+//   })
+//   .catch((error) => {
+//     alert("You need at least 1 $COVD to video chat!");
+//   });
+
+
+function startVideoChat(balance) {
   if(hasEnough) { //check if has COVD minimum!
     initializeSession();
   } else {
-    throw new Error('You gotta have some $COVD (buy some on $UNI)');
+    alert('You gotta have some $COVD (buy some on $UNI)');
   }
+//   fetch(SERVER_BASE_URL + '/session', {
+//   mode: 'no-cors'
+// }).then(function(res) {
+//   console.log(res);
+//   apiKey = res.apiKey;
+//   sessionId = res.sessionId;
+//   token = res.token;
   
-}).catch(handleError);
+  
+// }).catch(handleError);
 }
 
 
